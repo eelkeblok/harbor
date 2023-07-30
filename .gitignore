@@ -19,3 +19,6 @@ backstopJS
 .DS_Store
 
 docs/src/styleguide
+
+# IntelliJ IDE files.
+.idea
