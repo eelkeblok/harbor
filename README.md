@@ -15,13 +15,13 @@ It is optional to use the bundled workers but they ensure that they work correct
 You can install Harbor via NPM ([Nodejs](https://nodejs.org) is required in order to do this.):
 
 ```sh
-$ npm install @toolbarthomas/harbor
+$ npm install @eelkeblok/harbor
 ```
 
 Then you can start Harbor by simply running:
 
 ```sh
-$ node node_modules/@toolbarthomas/harbor/index.js
+$ node node_modules/@eelkeblok/harbor/index.js
 ```
 
 Harbor will run the default tasks when there are no CLI arguments defined for the initial command.
@@ -42,7 +42,7 @@ Keep in mind that you need to be in the correct working directory in order to ru
 it correctly.
 
 ```sh
-$ npm install -g @toolbarthomas/harbor
+$ npm install -g @eelkeblok/harbor
 ```
 
 Installing Harbor globally will lock you in a specific version so keep in mind
@@ -61,8 +61,8 @@ Workers can be initiated during a Harbor process by calling the defined hook wit
 
 ```sh
 # Starts the workers that have the stylesheets hook from the configuration.
-$ node node_modules/@toolbarthomas/harbor/index.js --task=stylesheets
-$ node node_modules/@toolbarthomas/harbor/index.js stylesheets
+$ node node_modules/@eelkeblok/harbor/index.js --task=stylesheets
+$ node node_modules/@eelkeblok/harbor/index.js stylesheets
 ```
 
 This example will start the workers that are defined with the `stylesheets` hook, by default it will process the configured sass entry files (or it will try to use the default configured entries).
@@ -88,7 +88,7 @@ Workers that share the same hook without the double colons will run in a paralle
 
 ```sh
 # Should initiate the compile workers in a parallel order:
-$ node node_modules/@toolbarthomas/harbor/index.js --task=compile
+$ node node_modules/@eelkeblok/harbor/index.js --task=compile
 ```
 
 The following workers are configured within the default configuration:
@@ -111,7 +111,7 @@ Plugins are used to run post-process tasks like starting the storybook developme
 These can be defined by adding the given CLI argument hooks within your command:
 
 ```sh
-$ node node_modules/@toolbarthomas/harbor/index.js --task=javascripts --minify
+$ node node_modules/@eelkeblok/harbor/index.js --task=javascripts --minify
 ```
 
 More plugins can be included within a single command, the following plugins are available within the default configuration, the result of certain plugins can vary between environments:
@@ -128,7 +128,7 @@ This will only generate the actual assets that should be compatible for the Drup
 Keep in mind that this command will only run the configured Harbor workers, the actual development tools can be included with extra CLI arguments:
 
 ```sh
-$ node node_modules/@toolbarthomas/harbor/index.js --task=javascripts --minify --watch
+$ node node_modules/@eelkeblok/harbor/index.js --task=javascripts --minify --watch
 ```
 
 ## Environment
@@ -395,15 +395,15 @@ You can assign the following NPM script entries when using the default hook conf
 
 ```js
   {
-    "production": "node node_modules/@toolbarthomas/harbor/index.js --task=prepare,compile --minify",
+    "production": "node node_modules/@eelkeblok/harbor/index.js --task=prepare,compile --minify",
     "predevelopment": "npm run production",
-    "development": "node node_modules/@toolbarthomas/harbor/index.js --watch --styleguide",
-    "images": "node node_modules/@toolbarthomas/harbor/index.js --task=images",
-    "javascripts": "node node_modules/@toolbarthomas/harbor/index.js --task=javascripts",
-    "resolve": "node node_modules/@toolbarthomas/harbor/index.js --task=resolve",
-    "styleguide": "node node_modules/@toolbarthomas/harbor/index.js --styleguide",
-    "stylesheets": "node node_modules/@toolbarthomas/harbor/index.js --task=stylesheets",
-    "test": "node node_modules/@toolbarthomas/harbor/index.js --task=test",
+    "development": "node node_modules/@eelkeblok/harbor/index.js --watch --styleguide",
+    "images": "node node_modules/@eelkeblok/harbor/index.js --task=images",
+    "javascripts": "node node_modules/@eelkeblok/harbor/index.js --task=javascripts",
+    "resolve": "node node_modules/@eelkeblok/harbor/index.js --task=resolve",
+    "styleguide": "node node_modules/@eelkeblok/harbor/index.js --styleguide",
+    "stylesheets": "node node_modules/@eelkeblok/harbor/index.js --task=stylesheets",
+    "test": "node node_modules/@eelkeblok/harbor/index.js --task=test",
   }
 ```
 

@@ -1,5 +1,5 @@
 {
-  "name": "@toolbarthomas/harbor",
+  "name": "@eelkeblok/harbor",
   "version": "0.226.0",
   "type": "module",
   "description": "Boilerplate for Drupal Themes",
@@ -42,18 +42,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/toolbarthomas/harbor.git"
+    "url": "git+https://github.com/eelkeblok/harbor.git"
   },
   "keywords": [
     "Drupal",
     "Theme"
   ],
-  "author": "Thomas van der Velde <contact@toolbarthomas.net>",
+  "author": "Thomas van der Velde <contact@eelkeblok.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/toolbarthomas/harbor/issues"
+    "url": "https://github.com/eelkeblok  /harbor/issues"
   },
-  "homepage": "https://github.com/toolbarthomas/harbor#readme",
+  "homepage": "https://github.com/eelkeblok/harbor#readme",
   "dependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.7",

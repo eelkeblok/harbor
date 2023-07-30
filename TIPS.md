@@ -185,7 +185,7 @@ The mocking function ignores the defined function parameters and will return the
 
 # 4. Generating Storybook stories from the existing templates <a id="tips-4"></a>
 
-It is possible to generate the Storybook components with optional data by creating a configuration file relative to your Twig template. A Storybook story can be automatically generated with dynamic data by using `$ harbor --setup` or `node node_modules/@toolbarthomas/harbor/index.js --setup`. You should define your configuration as: `JSON`, `YAML` or `JS modules [MJS/JS]`.
+It is possible to generate the Storybook components with optional data by creating a configuration file relative to your Twig template. A Storybook story can be automatically generated with dynamic data by using `$ harbor --setup` or `node node_modules/@eelkeblok/harbor/index.js --setup`. You should define your configuration as: `JSON`, `YAML` or `JS modules [MJS/JS]`.
 
 The following Harbor commmand will create Storybook stories for the existing Twig templates that uses one of the mock files:
 
@@ -198,7 +198,7 @@ The following Harbor commmand will create Storybook stories for the existing Twi
 ```
 
 ```bash
-$ node node_modules/@toolbarthomas/harbor/index.js --setup
+$ node node_modules/@eelkeblok/harbor/index.js --setup
 ```
 
 Will generate standalone-component.stories.js that is based from the existing Twig template:
@@ -275,7 +275,7 @@ Adding Javascript files is also possible, but keep in mind that you want to defi
 With the `Harbor Asset Exporter` you can export the generated assets as a JS module. It can be used to preprocess your stylesheets so it can be included within a Web Component like [Lit Element](https://lit.dev/).
 
 ```bash
-$ node node_modules/@toolbarthomas/harbor/index.js task=export
+$ node node_modules/@eelkeblok/harbor/index.js task=export
 ```
 
 The Assets Exporter will export the configurated entries as `{entry}.asset.js` module. You can also export the assets source within a custom template literal within your configuration.
@@ -378,7 +378,7 @@ It is possible to run Snapshot tests with BackstopJS for all created Storybook s
 Storybook first generates a stories manifest in order to define the components to test.
 A temporary Storybook instance will be created afterwards, which BackstopJS will use for the snapshot tests.
 
-First you need to create the reference tests for Backstop JS, the references are based on the created Storybook setup. This means that all stories that exists within Storybook will be tested; this also includes the generated stories that are created by using `$ node node_modules/@toolbarthomas/harbor/index.js --setup`.
+First you need to create the reference tests for Backstop JS, the references are based on the created Storybook setup. This means that all stories that exists within Storybook will be tested; this also includes the generated stories that are created by using `$ node node_modules/@eelkeblok/harbor/index.js --setup`.
 
 ```php
 # Backstop will test the following story that can be inspected afterwards.
