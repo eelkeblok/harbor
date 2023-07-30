@@ -1,5 +1,8 @@
 # Harbor
 
+*Note: This is not the canonical version of this package. Please refer to 
+[@toolbarthomas/harbor](https://www.npmjs.com/package/@toolbarthomas/harbor).*
+
 Harbor is an asset builder that fits within the theme architecture of [Drupal](https://drupal.org/) 8+ setups.
 It can create [Drupal](https://drupal.org/) compatible themes without the need to install the actual CMS.
 With the help of [Storybook](https://storybookjs.org/) it can generate the Twig templates that are used by Drupal themes.
