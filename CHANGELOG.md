@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+When prepating a release, change the heading according to the format {version} - {yyyy-mm-dd}) and remove this explainer
+paragragp and any sections without entries. Afterwards, restore the unreleased section. Don't forget to check the 
+package.json before tagging.
+
+### Added 🚀
+
+### Changed 💡
+
+### Deprecated 🧨
+
+### Removed 🗑️
+
+### Fixed 🪲
+
+### Security 🔒
+
 ## 0.226.1 - 2023-07-31
 
 ### Added
