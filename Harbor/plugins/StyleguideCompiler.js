@@ -39,7 +39,7 @@ export class StyleguideCompiler extends Plugin {
 
     const script = Plugin.escapeCommand(path.resolve(`${nodeModules}/.bin/${bin}`)) + ` ${sbCommand}`;
 
-    const config = Plugin.escapeCommand(path.resolve(StyleguideCompiler.configPath()));
+    let config = Plugin.escapeCommand(path.resolve(StyleguideCompiler.configPath()));
     let staticDirectory = this.getOption('staticDirectory');
 
     if (this.environment.THEME_STATIC_DIRECTORY) {
@@ -69,8 +69,9 @@ export class StyleguideCompiler extends Plugin {
         );
 
       if (customConfigurations.length) {
+        config = this.getOption('configDirectory');
         this.Console.info(
-          `Using storybook configuration from: ${this.getOption('configDirectory')}`
+          `Using storybook configuration from: ${config}`
         );
 
         customConfigurations.forEach((configuration) => {
