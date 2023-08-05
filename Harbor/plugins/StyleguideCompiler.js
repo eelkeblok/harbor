@@ -29,14 +29,15 @@ export class StyleguideCompiler extends Plugin {
    * The initial handler that will be called by the Harbor TaskManager.
    */
   async init() {
-    const bin =
-      this.environment.THEME_ENVIRONMENT === 'production' ? 'build-storybook' : 'start-storybook';
+    const bin = 'sb';
+    const sbCommand =
+      this.environment.THEME_ENVIRONMENT === 'production' ? 'build' : 'dev';
 
     const nodeModules = fs.existsSync(path.resolve(`node_modules/.bin/${bin}`))
       ? path.resolve('node_modules')
       : path.resolve(this.modulePath, 'node_modules');
 
-    const script = Plugin.escapeCommand(path.resolve(`${nodeModules}/.bin/${bin}`));
+    const script = Plugin.escapeCommand(path.resolve(`${nodeModules}/.bin/${bin}`)) + ` ${sbCommand}`;
 
     const config = Plugin.escapeCommand(path.resolve(StyleguideCompiler.configPath()));
     let staticDirectory = this.getOption('staticDirectory');
