@@ -1,8 +1,8 @@
 import { outdent } from 'outdent';
 import camelcase from 'camelcase';
 import fs from 'fs';
-import glob from 'glob';
-import mkdirp from 'mkdirp';
+import { globSync } from 'glob';
+import { mkdirp } from 'mkdirp';
 import path from 'path';
 import prettier from 'prettier';
 
@@ -94,22 +94,26 @@ export class StyleguideHelper extends Worker {
           ([destination, template]) =>
             new Promise((callback) => {
               try {
-                fs.writeFile(
-                  destination,
-                  prettier.format(template, {
+                prettier
+                  .format(template, {
                     parser: 'babel',
                     ...super.getOption('prettier', {}),
-                  }),
-                  (exception) => {
-                    if (exception) {
-                      this.Console.warning(exception);
+                  })
+                  .then((result) => {
+                    if (!result) {
+                      return callback();
                     }
 
-                    this.Console.log(`Styleguide entry template created: ${destination}`);
+                    return fs.writeFile(destination, result, (exception) => {
+                      if (exception) {
+                        this.Console.warning(exception);
+                      }
 
-                    callback();
-                  }
-                );
+                      this.Console.log(`Styleguide entry template created: ${destination}`);
+
+                      callback();
+                    });
+                  });
               } catch (exception) {
                 this.Console.warning(exception);
               }
@@ -350,7 +354,7 @@ export class StyleguideHelper extends Worker {
 
     const config = super.flatten(
       configurationExtensions
-        .map((extension) => glob.sync(`${path.dirname(source)}/**/*.${extension}`))
+        .map((extension) => globSync(`${path.dirname(source)}/**/*.${extension}`))
         .filter((e) => e && e.length)
     );
 
@@ -520,7 +524,7 @@ export class StyleguideHelper extends Worker {
         if (includeDirectories && includeDirectories.length) {
           includeDirectories.forEach((directory) => {
             const cwd = path.resolve(this.environment.THEME_SRC, directory);
-            const proposal = glob.sync(`${cwd}/**/${path.basename(externalSource)}`);
+            const proposal = globSync(`${cwd}/**/${path.basename(externalSource)}`);
 
             if (!proposal.length) {
               return;

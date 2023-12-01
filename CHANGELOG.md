@@ -22,6 +22,96 @@ package.json before tagging.
 
 ### Security 🔒
 
+## 0.711.0 (26 October, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance.
+
+## 0.710.0 (19 October, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance.
+
+## 0.709.0 (17 October, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance.
+
+## 0.708.0 (12 October, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance.
+
+## 0.707.1 (10 October, 2023)
+
+### Maintenance
+
+- Storybook: Optimize Asset loading interval.
+
+## 0.707.0 (10 October, 2023)
+
+### Maintenance
+
+- Storybook: Await JS dependencies to ensure the attach method is called for all `Drupal.behaviors` entries. This should resolve the issue where the `DOMContentLoaded` event was not completed during the initial runOnPageChange Storybook template callback.
+
+## 0.706.0 (10 October, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance
+
+## 0.705.0 (3 October, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance
+
+## 0.704.0 (25 September, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance
+
+## 0.703.0 (11 September, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance
+
+## 0.702.0 (6 September, 2023)
+
+### Maintenance
+
+- Node: Updates Babel packages to 7.22.15
+
+## 0.701.0 (4 September, 2023)
+
+### Maintenance
+
+- Node: Implements minor NPM package maintenance
+- Storybook: Upgrade utilities to 7.5
+
+## 0.700.0 (9 Aug, 2023)
+This release includes the newly released Storybook version 7. Some modifications within your stories definities are required in order to correctly the Twig templates within the Storybook environment. You can follow the example for the default [Storybook HTML environment](https://storybook.js.org/docs/html/writing-stories/introduction). (The README.md has also been updated regarding this breaking change.)
+
+### Features
+
+- Storybook V7: See the release notes [@storybook](https://storybook.js.org/releases/7.0).
+
+
+## 0.300.0 (9 Aug, 2023)
+This maintenance release updates to the current Node packages that are used within the build process.
+This is a in between maintenance release for Harbor Storybook 6.5. The migration for Storybook V7 is currently under development.
+Future release will be based from 0.700.0 version scheme that includes the update to Storybook V7
+
+### Maintenance
+
+- Node: Implements NPM package maintenance, does not update Storybook to V7.
+
 ## 0.226.1 - 2023-07-31
 
 ### Added

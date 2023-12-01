@@ -1,14 +1,14 @@
 import { execSync, spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-import glob from 'glob';
+import { globSync } from 'glob';
 import http from 'http';
 import os from 'os';
 import path from 'path';
 import YAML from 'yaml';
 
 // @TODO should install within instance like the node-sass fallback.
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 
 import { Worker } from './Worker.js';
 
@@ -133,7 +133,7 @@ export class StyleguideTester extends Worker {
       });
     });
 
-    const customScenarios = glob.sync(`${this.getOption('scenarioDirectory')}/**/*.{json,yaml}`);
+    const customScenarios = globSync(`${this.getOption('scenarioDirectory')}/**/*.{json,yaml}`);
     if (customScenarios.length) {
       this.Console.info(`Importing ${customScenarios.length} backstopJS scenarios...`);
 
@@ -220,7 +220,7 @@ export class StyleguideTester extends Worker {
       if (fs.existsSync(destinationDirectory)) {
         this.Console.log(`Removing previous styleguide build: ${destinationDirectory}`);
 
-        rimraf(destinationDirectory, () => {
+        rimraf(destinationDirectory).then(() => {
           if (hasError) {
             this.Console.warning(`Backstop test has failed since it encountered some errors`);
             // Reject afterwards so we can close any instances within the Worker scope.
