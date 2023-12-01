@@ -19,7 +19,7 @@
     "resolve": "node ./index.js --task=resolve",
     "setup": "node ./index.js --task=setup",
     "styleguide": "node ./index.js --styleguide",
-    "stylesheets": "node ./index.js --task=stylesheets",1
+    "stylesheets": "node ./index.js --task=stylesheets",
     "test:approve": "node ./index.js --task=test --test=approve",
     "test:reference": "node ./index.js --task=test --test=reference",
     "test": "node ./index.js --task=test"
