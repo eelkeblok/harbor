@@ -180,7 +180,7 @@ export class Core {
 
         sources.forEach((source) => {
           const p = path.join(
-            useDestination ? this.environment.THEME_DIST : this.environment.THEME_SRC,
+            useDestination ? this.config.destination : this.config.source,
             source
           );
 

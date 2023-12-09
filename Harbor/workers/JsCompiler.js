@@ -81,8 +81,8 @@ export class JsCompiler extends Worker {
                 const destination = path
                   .resolve(entry)
                   .replace(
-                    path.resolve(this.environment.THEME_SRC),
-                    path.resolve(this.environment.THEME_DIST)
+                    path.resolve(this.config.source),
+                    path.resolve(this.config.destination)
                   );
 
                 return mkdirp(path.dirname(destination)).then((dirPath, dirException) => {

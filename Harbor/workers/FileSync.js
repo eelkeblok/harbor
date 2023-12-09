@@ -20,8 +20,8 @@ export class FileSync extends Worker {
    * The initial handler that will be called by the Harbor TaskManager.
    */
   init() {
-    this.cwd = path.relative(process.cwd(), this.environment.THEME_SRC);
-    this.dist = path.relative(process.cwd(), this.environment.THEME_DIST);
+    this.cwd = path.relative(process.cwd(), this.config.source);
+    this.dist = path.relative(process.cwd(), this.config.destination);
 
     // Get the optional defined resource paths to sync.
     this.defineResourcePatterns();

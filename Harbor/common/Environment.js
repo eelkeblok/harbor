@@ -12,8 +12,6 @@ import path from 'path';
 export class Environment {
   constructor() {
     this.defaults = {
-      THEME_SRC: './src',
-      THEME_DIST: './dist',
       THEME_PORT: 8080,
       THEME_DEBUG: false,
       THEME_ENVIRONMENT: 'production',

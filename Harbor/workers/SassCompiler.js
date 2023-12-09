@@ -199,8 +199,8 @@ export class SassCompiler extends Worker {
       const destination = path
         .resolve(entry)
         .replace(
-          path.resolve(this.environment.THEME_SRC),
-          path.resolve(this.environment.THEME_DIST)
+          path.resolve(this.config.source),
+          path.resolve(this.config.destination)
         )
         .replace('.scss', '.css');
 
@@ -209,7 +209,7 @@ export class SassCompiler extends Worker {
       this.compiler.render(
         Object.assign(this.getOptions(), {
           file: entry,
-          includePaths: [this.environment.THEME_SRC],
+          includePaths: [this.config.source],
           sourceMap: this.parseEnvironmentProperty('THEME_DEBUG'),
           importer: globImporter(),
           outFile: destination,

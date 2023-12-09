@@ -46,7 +46,7 @@ export class StyleguideHelper extends Worker {
       let destinationDirectory = '';
       if (this.getOption('destinationDirectory')) {
         destinationDirectory = path.resolve(
-          this.environment.THEME_SRC,
+          this.config.source,
           this.getOption('destinationDirectory')
         );
 
@@ -69,7 +69,7 @@ export class StyleguideHelper extends Worker {
         if (destinationDirectory) {
           const relativeSource = path
             .resolve(source)
-            .replace(path.resolve(this.environment.THEME_SRC), '');
+            .replace(path.resolve(this.config.source), '');
           const dirs = relativeSource
             .split(path.sep)
             .filter((s) => s.length && path.basename(source) !== s);
@@ -458,7 +458,7 @@ export class StyleguideHelper extends Worker {
 
     const relativeSource = path
       .resolve(source)
-      .replace(path.resolve(this.environment.THEME_SRC), '');
+      .replace(path.resolve(this.config.source), '');
 
     const dirs = relativeSource
       .split(path.sep)
@@ -523,7 +523,7 @@ export class StyleguideHelper extends Worker {
         // any directories defined.
         if (includeDirectories && includeDirectories.length) {
           includeDirectories.forEach((directory) => {
-            const cwd = path.resolve(this.environment.THEME_SRC, directory);
+            const cwd = path.resolve(this.config.source, directory);
             const proposal = globSync(`${cwd}/**/${path.basename(externalSource)}`);
 
             if (!proposal.length) {

@@ -56,7 +56,7 @@ export class Watcher extends Plugin {
           Array.isArray(this.config.instances[name].path)
             ? this.config.instances[name].path
             : [this.config.instances[name].path]
-        ).map((p) => path.join(this.environment.THEME_SRC, p));
+        ).map((p) => path.join(this.config.source, p));
 
         this.Console.log(
           `Creating ${this.name} instance, ${name} will watch for changes within '${query.join(

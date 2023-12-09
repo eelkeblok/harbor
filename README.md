@@ -141,8 +141,6 @@ The following configuration can be adjusted, the default values will be used for
 
 | Environment variable   | Default value    | Description                                                                                                                                                  |
 | ---------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| THEME_SRC              | ./src            | Defines the working source directory for all Worker entries.                                                                                                 |
-| THEME_DIST             | ./dist           | Defines the build directory for all Worker entries & the styleguide development server.                                                                      |
 | THEME_PORT             | 8080             | Defines the server port for the styleguide development server.                                                                                               |
 | THEME_DEBUG            | false            | Includes sourcemaps if the defined entries support it.                                                                                                       |
 | THEME_ENVIRONMENT      | production       | Enables environment specific Plugins to be used.                                                                                                             |
@@ -290,7 +288,7 @@ StyleguideHelper: {
 
 It is also possible to search for configuration files outside the directory by including the `includeDirectories` option within the variant configuration.
 
-Keep in mind that the directories are resolved from the defined `THEME_SRC` environment path. It will use the configuration if the file `config/{module}.example.json` exists:
+Keep in mind that the directories are resolved from the defined `source` configuration key. It will use the configuration if the file `config/{module}.example.json` exists:
 
 ```js
 // Will create a variant as module import:

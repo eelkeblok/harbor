@@ -402,12 +402,12 @@ export class StyleguideCompiler extends Plugin {
       return;
     }
 
-    // Lookup any stories within the defined THEME_SRC environment variable.
+    // Lookup any stories within the defined source location.
     // eslint-disable-next-line prefer-spread
     const stories = [].concat.apply(
       [],
       Object.values(this.config.entry).map((entry) =>
-        globSync(path.join(this.environment.THEME_SRC, entry)).map((e) => path.resolve(e))
+        globSync(path.join(this.config.source, entry)).map((e) => path.resolve(e))
       )
     );
 

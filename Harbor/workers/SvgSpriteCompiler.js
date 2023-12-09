@@ -91,15 +91,15 @@ export class SvgSpriteCompiler extends Worker {
           : this.config.entry[filename][0];
 
       const basePath = path.join(
-        this.environment.THEME_SRC,
+        this.config.source,
         entry.substring(0, entry.indexOf('/*'))
       );
 
       const destination = path
         .resolve(basePath)
         .replace(
-          path.resolve(this.environment.THEME_SRC),
-          path.resolve(this.environment.THEME_DIST)
+          path.resolve(this.config.source),
+          path.resolve(this.config.destination)
         );
       const name = `${filename}.svg` || 'svgsprite.svg';
 
@@ -108,8 +108,8 @@ export class SvgSpriteCompiler extends Worker {
           const d = path
             .resolve(entry.sourcePath)
             .replace(
-              path.resolve(this.environment.THEME_SRC),
-              path.resolve(this.environment.THEME_DIST)
+              path.resolve(this.config.source),
+              path.resolve(this.config.destination)
             );
 
           mkdirp.sync(path.dirname(d));
