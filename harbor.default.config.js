@@ -7,6 +7,7 @@ import combineDuplicateSelectors from 'postcss-combine-duplicated-selectors';
 import cssnano from 'cssnano';
 import stylelint from 'stylelint';
 import { SvgSpriteCompiler } from './Harbor/workers/SvgSpriteCompiler.js';
+import 'dotenv/config';
 
 const babelConfig = globSync('.babelrc*');
 const browserListConfig = globSync('.browserlistrc*');
@@ -14,6 +15,8 @@ const prettierConfig = globSync('.prettierrc*');
 const styleLintConfig = globSync('.stylelintrc*');
 
 export default {
+  source: process.env.THEME_SRC ?? 'src',
+  destination: process.env.THEME_DIST ?? 'dist',
   workers: {
     AssetExporter: {
       entry: {},

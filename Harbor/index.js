@@ -201,6 +201,14 @@ export class Harbor {
         const Instance = instances[name];
         const { hook } = config[Instance.type][name];
         const h = Array.isArray(hook) ? hook : [hook];
+        let globalConfig = {};
+        const propertyNames = Object.getOwnPropertyNames(config);
+        propertyNames.forEach((name) => {
+          if (name == 'workers' || name == 'plugins') {
+            return;
+          }
+          globalConfig[name] = config[name];
+        });
 
         // Define the environment for the current name.
         Instance.defineEnvironment(this.env || {});
@@ -209,8 +217,8 @@ export class Harbor {
         Instance.defineConsole(this.Console);
 
         // Define the configuration for the current name.
-        Instance.defineConfig(config[Instance.type][name]);
-
+        Instance.defineConfig({...config[Instance.type][name], ...globalConfig});
+  
         // Define the configuration for the current name.
         Instance.defineEntry();
 
