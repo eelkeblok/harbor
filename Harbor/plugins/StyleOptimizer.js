@@ -6,7 +6,7 @@ import postcss from 'postcss';
 import { Plugin } from './Plugin.js';
 
 /**
- * Optimizes the compiled stylesheet entries within the defined THEME_DIST
+ * Optimizes the compiled stylesheet entries within the defined destination
  * directory.
  */
 export class StyleOptimizer extends Plugin {

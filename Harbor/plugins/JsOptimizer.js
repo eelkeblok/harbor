@@ -7,7 +7,7 @@ import { minify } from 'uglify-js';
 import { Plugin } from './Plugin.js';
 
 /**
- * Minifies the defined js entries within the THEME_DIST directory
+ * Minifies the defined js entries within the destination directory
  */
 export class JsOptimizer extends Plugin {
   /**

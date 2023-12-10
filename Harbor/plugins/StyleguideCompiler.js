@@ -93,7 +93,7 @@ export class StyleguideCompiler extends Plugin {
     let cmd;
 
     if (this.environment.THEME_ENVIRONMENT === 'production') {
-      const staticBuildPath = path.join(this.environment.THEME_DIST, staticDirectory);
+      const staticBuildPath = path.join(this.config.destination, staticDirectory);
 
       const previousBuild = globSync(`${staticBuildPath}/**/*`);
 
@@ -506,7 +506,7 @@ export class StyleguideCompiler extends Plugin {
 
           Object.keys(entry).forEach((n) => {
             let p = path.normalize(path.dirname(entry[n])).replace('*', '');
-            p = path.join('${this.environment.THEME_DIST}', p, n + '.svg');
+            p = path.join('${this.config.destination}', p, n + '.svg');
 
             if (fs.existsSync(path.resolve(p))) {
               sprites[n] = p;
@@ -600,7 +600,7 @@ export class StyleguideCompiler extends Plugin {
               null,
               2
             )}),
-            THEME_DIST: '${path.normalize(this.environment.THEME_DIST)}/',
+            THEME_DIST: '${path.normalize(this.config.destination)}/',
             THEME_ENVIRONMENT: '${this.environment.THEME_ENVIRONMENT}',
             THEME_SPRITES: JSON.stringify(sprites),
             THEME_ALIAS: ${JSON.stringify(this.getOption('alias'), null, 2)},
@@ -635,7 +635,7 @@ export class StyleguideCompiler extends Plugin {
               process.env.THEME_LIBRARIES_OVERRIDES = JSON.stringify(${JSON.stringify(
                 this.getOption('librariesOverride', {})
               )});
-              process.env.THEME_DIST = '${path.normalize(this.environment.THEME_DIST)}/';
+              process.env.THEME_DIST = '${path.normalize(this.config.destination)}/';
               process.env.THEME_ENVIRONMENT = '${this.environment.THEME_ENVIRONMENT}';
               process.env.THEME_SPRITES = JSON.stringify(sprites, null, 2);
               process.env.THEME_ALIAS = JSON.stringify(${JSON.stringify(this.getOption('alias'))});
@@ -684,10 +684,10 @@ export class StyleguideCompiler extends Plugin {
       staticDirectory = this.environment.THEME_STATIC_DIRECTORY;
     }
 
-    const staticBuildPath = path.join(this.environment.THEME_DIST, staticDirectory);
+    const staticBuildPath = path.join(this.config.destination, staticDirectory);
 
     // Ensure the processed assets are also available for the static build.
-    const assets = globSync(`${this.environment.THEME_DIST}/**/*`)
+    const assets = globSync(`${this.config.destination}/**/*`)
       .filter((asset) => asset.indexOf(staticBuildPath) < 0)
       .filter((asset) => asset.indexOf(this.getOption('staticDirectory')) < 0);
 

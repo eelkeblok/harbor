@@ -71,17 +71,20 @@ export class Environment {
   /**
    * Checks if the defined environment build destination is empty.
    *
-   * @param {Object} environment The environment configuration to use.
+   * @param {Object} config The environment configuration to use.
+   * 
+   * @todo Move elsewhere? This is now not even checking the environment
+   *   variable.
    */
-  static hasBuild(environment) {
-    if (!environment || !environment.THEME_DIST) {
+  static hasBuild(config) {
+    if (!config || !config.destination) {
       return false;
     }
 
-    if (!fs.existsSync(path.resolve(environment.THEME_DIST))) {
+    if (!fs.existsSync(path.resolve(config.destination))) {
       return false;
     }
 
-    return fs.readdirSync(path.resolve(environment.THEME_DIST)).length > 0;
+    return fs.readdirSync(path.resolve(config.destination)).length > 0;
   }
 }

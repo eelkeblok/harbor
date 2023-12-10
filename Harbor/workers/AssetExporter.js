@@ -25,7 +25,7 @@ export class AssetExporter extends Worker {
       super.flatten(
         entries
           .map((name) => [
-            ...globSync(path.join(this.environment.THEME_DIST, this.config.entry[name])).map(
+            ...globSync(path.join(this.config.destination, this.config.entry[name])).map(
               (entry) => {
                 if (queue.includes(entry)) {
                   this.Console.warning(`Skipping existing asset: ${entry}`);

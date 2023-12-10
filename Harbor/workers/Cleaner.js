@@ -13,7 +13,7 @@ export class Cleaner extends Worker {
    */
   async init() {
     if (this.environment) {
-      this.path = path.resolve(this.environment.THEME_DIST);
+      this.path = path.resolve(this.config.destination);
 
       if (fs.existsSync(this.path)) {
         this.Console.log(`Cleaning directory: ${this.path}`);

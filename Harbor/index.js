@@ -199,6 +199,9 @@ export class Harbor {
     if (instances instanceof Object) {
       Object.keys(instances).forEach((name) => {
         const Instance = instances[name];
+        if (!config[Instance.type][name]) {
+          return;
+        }
         const { hook } = config[Instance.type][name];
         const h = Array.isArray(hook) ? hook : [hook];
         let globalConfig = {};
