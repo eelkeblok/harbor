@@ -20,10 +20,10 @@ export class StyleguideTester extends Worker {
     const script = path.resolve(fileURLToPath(import.meta.url), '../../../index.js');
     const staticDirectory = this.getOption('staticDirectory');
     const outputPath = this.getOption('outputPath');
-    const { THEME_DIST } = this.environment;
-    const manifest = path.resolve(THEME_DIST, staticDirectory, outputPath);
+    const { destination } = this.config;
+    const manifest = path.resolve(destination, staticDirectory, outputPath);
     const initialCwd = path.resolve('node_modules/@storybook/cli/bin/index.js');
-    const destinationDirectory = path.resolve(THEME_DIST, staticDirectory);
+    const destinationDirectory = path.resolve(destination, staticDirectory);
     let hasError = false;
 
     this.Console.log('Preparing test server...');

@@ -150,8 +150,8 @@ export class Core {
    * Creates a collection of destination paths from the configured service entry
    * configuration.
    *
-   * @param {boolean} useDestination Defines the paths from the THEME_DIST
-   * environment variable.
+   * @param {boolean} useDestination Paths are relative to the configured
+   * destination.
    */
   defineEntry(useDestination) {
     if (!this.config.entry || !(this.config.entry instanceof Object)) {

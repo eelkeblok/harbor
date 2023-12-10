@@ -1,6 +1,6 @@
 # Harbor
 
-*Note: This is not the canonical version of this package. Please refer to 
+*Note: This is not the canonical version of this package. Please refer to
 [@toolbarthomas/harbor](https://www.npmjs.com/package/@toolbarthomas/harbor).*
 
 Harbor is an asset builder that fits within the theme architecture of [Drupal](https://drupal.org/) 8+ setups.
@@ -96,17 +96,17 @@ $ node node_modules/@eelkeblok/harbor/index.js --task=compile
 
 The following workers are configured within the default configuration:
 
-| Worker           | Description                                                                     | Hook(s)                                                 |
-| ---------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| AssetExporter    | Wraps the defined entries as a template literal module.                         | `AssetExporter` `export`                                |
-| Cleaner          | Cleans the defined THEME_DIST environment directory.                            | `Cleaner` `clean` `prepare` `default`                   |
-| FileSync         | Synchronizes the defined entry files to the THEME_DIST environment directory.   | `FilSync` `sync` `prepare` `default`                    |
-| JsCompiler       | Transforms the defined entry javascript files with Babel.                       | `JSCompiler` `js` `javascripts` `compile` `default`     |
-| Resolver         | Resolves NPM installed vendor pacakges to the THEME_DIST environment directory. | `Resolver` `resolve` `prepare` `default`                |
-| SassCompiler     | Compiles the defined entry Sass files with Node Sass.                           | `SassCompiler` `sass` `stylesheets` `compile` `default` |
-| StyleguideHelper | Creates initial storybook entries from the defined Twig templates.              | `StyleguideHelper` `setup`                              |
-| StyleguideTester | Initiates Snapshot tests for the styleguide with BackstopJS.                    | `StyleguideTester` `test`                               |
-| SVSpriteCompiler | Creates one or more inline SVG sprites based from the configured entries.       | `SVGSpriteCompiler` `svg` `images` `compile` `default`  |
+| Worker           | Description                                                               | Hook(s)                                                 |
+| ---------------- |---------------------------------------------------------------------------| ------------------------------------------------------- |
+| AssetExporter    | Wraps the defined entries as a template literal module.                   | `AssetExporter` `export`                                |
+| Cleaner          | Cleans the defined destination directory.                                 | `Cleaner` `clean` `prepare` `default`                   |
+| FileSync         | Synchronizes the defined entry files to the destination directory.        | `FilSync` `sync` `prepare` `default`                    |
+| JsCompiler       | Transforms the defined entry javascript files with Babel.                 | `JSCompiler` `js` `javascripts` `compile` `default`     |
+| Resolver         | Resolves NPM installed vendor pacakges to the destination directory.      | `Resolver` `resolve` `prepare` `default`                |
+| SassCompiler     | Compiles the defined entry Sass files with Node Sass.                     | `SassCompiler` `sass` `stylesheets` `compile` `default` |
+| StyleguideHelper | Creates initial storybook entries from the defined Twig templates.        | `StyleguideHelper` `setup`                              |
+| StyleguideTester | Initiates Snapshot tests for the styleguide with BackstopJS.              | `StyleguideTester` `test`                               |
+| SVSpriteCompiler | Creates one or more inline SVG sprites based from the configured entries. | `SVGSpriteCompiler` `svg` `images` `compile` `default`  |
 
 ## Plugins
 
@@ -120,9 +120,9 @@ $ node node_modules/@eelkeblok/harbor/index.js --task=javascripts --minify
 More plugins can be included within a single command, the following plugins are available within the default configuration, the result of certain plugins can vary between environments:
 
 | Plugin             | Environment        | Description                                                                                 | Hook(s)               |
-| ------------------ | ------------------ | ------------------------------------------------------------------------------------------- | --------------------- |
-| JSOptimizer        | production `only`  | Minifies the defined js entries within the THEME_DIST directory                             | minify                |
-| StyleOptimizer     | production `only`  | Minifies the defined css entries within the THEME_DIST directory                            | minify                |
+| ------------------ | ------------------ |---------------------------------------------------------------------------------------------| --------------------- |
+| JSOptimizer        | production `only`  | Minifies the defined js entries within the destination directory                            | minify                |
+| StyleOptimizer     | production `only`  | Minifies the defined css entries within the destination directory                           | minify                |
 | StyleguideCompiler | production         | Creates a static storybook styleguide.                                                      | storybook, styleguide |
 | StyleguideCompiler | development        | Starts the storybook development server.                                                    | storybook, styleguide |
 | Watcher            | development `only` | Watches the configured instance entries and runs the assigned workers during a file change. | watch                 |
@@ -189,7 +189,7 @@ Most options are used before the defined Worker/Plugin is actually running; like
 
 ### Cleaner configuration
 
-The Cleaner is a default Harbor worker that will delete all files within the defined environment destination directory: `THEME_DIST`
+The Cleaner is a default Harbor worker that will delete all files within the defined destination directory.
 No specific configuration is available for this Worker.
 
 ### FileSync configuration
