@@ -112,7 +112,7 @@ export class Harbor {
     const tasks = [task].filter((t) => t);
     if (!tasks || !tasks.length) {
       this.services.TaskManager.workerHooks().forEach((hook) => {
-        if (Object.keys(customArgs).includes(hook.split('::')[0])) {
+        if (hook && Object.keys(customArgs).includes(hook.split('::')[0])) {
           tasks.push(hook.split('::')[0]);
 
           // Mark the custom argument as valid task.
